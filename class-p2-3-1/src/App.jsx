@@ -1,121 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import users from "./data/users";
+import todos from "./data/todos";
+
+console.log("users :>> ", users);
+console.log("todos :>> ", todos);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div>
+      <h1>Hello React</h1>
 
-      <div className="ticks"></div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    <Users />
+    <Todos />
+    </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+
+  );
 }
 
-export default App
+function Users(){
+  return(
+    <>
+    <h2>Users</h2>
+    {users.map((user) =>(
+      <>
+    <h3>{user.name}</h3>
+    <p>Email: <a href="mailto:{user.email}">{user.email}</a> </p>
+    <address>Address: {user.address.street}, {user.address.suite}, {user.address.city}, {user.address.zipcode}
+    </address>
+    <p>Company: {user.company.name}</p>
+    <p>Website: <a href="https://{user.website}">{user.website}</a></p>
+    </>
+      ))}
+
+    </>
+
+  );
+}
+
+  const status = (completed) =>{
+    if (completed === true){
+      return "Completed";
+    }else{
+      return "In Progress";
+    }
+  }
+
+function Todos(){
+  return(
+    <>
+    <h2>Todos</h2>
+     {todos.map((todo) => (
+      <>
+      <ul key={todo.id}>
+        <li>Task: {todo.title}</li>
+        {/* Call the function and pass the todo status */}
+        <li>Status: {status(todo.completed)}</li>
+
+      </ul>
+</>
+      ))}
+    </>
+  );
+}
+
+
+
+
+export default App;
