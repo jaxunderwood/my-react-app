@@ -1,120 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+// import { useState } from 'react'
+// import './App.css'
+
+
+
+
+
+const learning = "I am learning React. ";
+const level = "It is hard?";
+let five = 5;
+let eight = 8;
+
+const profile = {
+    firstName : "Jacqui",
+    location: "California",
+    favActivities: [
+      "knitting",
+      "gardening",
+      "reading",
+      "walking"
+    ]
+};
+const cat = {
+  color: "gray",
+  numberKittens: "5",
+  catImg: "https://bestfriends.org/sites/default/files/inline-images/Foster-Agave-1-byAnnika-Harley.jpg"
+
+}
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+  <div>
+    <h1>
+    {learning} {level}
+    </h1>
+    <p>{five} + {eight} = {five + eight}</p>
+    <p>{eight} - {five} = {eight - five}</p>
+    <p>{five} x {eight} = {five * eight}</p>
+    <p>{eight} / {five} = {eight / five}</p>
+    <h2>This profile is about {profile.firstName} in {profile.location}</h2>
+    <ul>
+      {profile.favActivities.map((activity) =>(
+          <li>{activity}</li>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      ))}
+      {/* <li>{profile.favActivities[0]}</li>
+      <li>{profile.favActivities[1]}</li>
+      <li>{profile.favActivities[2]}</li>
+      <li>{profile.favActivities[3]}</li> */}
+    </ul>
+    <figure><img src={cat.catImg} alt="A {cat.color} with her {cat.numberKittens} kittens" />
+    <figcaption>A {cat.color} with her {cat.numberKittens} kittens</figcaption>
+</figure>
+{/* Comments are weird in JSX */}
+  </div>
   )
 }
 
